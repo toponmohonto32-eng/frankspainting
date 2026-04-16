@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import Navigation from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +16,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Frank Painting | Professional Painting Services in Riverside, CA",
+  title: {
+    default: "Frank Painting | Professional Painting Services in Riverside, CA",
+    template: "%s | Frank Painting"
+  },
   description: "Frank Painting - 16+ years of professional interior & exterior painting services in Riverside, Inland Empire & Orange County. Licensed, insured, and committed to excellence. Free estimates!",
   keywords: ["painting services", "Riverside painting", "Inland Empire painters", "exterior painting", "interior painting", "commercial painting", "residential painting", "epoxy flooring", "cabinet refinishing", "Frank Painting"],
   authors: [{ name: "Frank Painting" }],
@@ -46,7 +51,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
       >
+        <Navigation />
         {children}
+        <Footer />
         <Toaster />
       </body>
     </html>
