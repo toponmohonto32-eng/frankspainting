@@ -3,12 +3,20 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { Star, MapPin, Phone, ArrowRight, Quote } from "lucide-react";
+import { Star, MapPin, Phone, ArrowRight, Quote, Calendar, CheckCircle2, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import PageHeader from "@/components/shared/PageHeader";
 import { testimonials, stats } from "@/lib/data";
+
+// Icon mapping
+const statsIconMap: Record<string, any> = {
+  Calendar,
+  CheckCircle2,
+  Star,
+  Award,
+};
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -54,7 +62,7 @@ export default function ReviewsPage() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {stats.map((stat, index) => {
-              const Icon = stat.icon;
+              const Icon = statsIconMap[stat.iconName] || Calendar;
               return (
                 <motion.div
                   key={index}
