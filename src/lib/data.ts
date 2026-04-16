@@ -1,9 +1,4 @@
 import { 
-  Paintbrush, 
-  Home, 
-  Building2, 
-  Sparkles,
-  Droplets,
   MapPin,
   Phone,
   Mail,
@@ -26,13 +21,22 @@ export const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Services data
+// Service icon mapping - use this in components
+export const serviceIcons = {
+  interior: "Home",
+  exterior: "Building2",
+  commercial: "Paintbrush",
+  "cabinet-refinishing": "Sparkles",
+  "epoxy-flooring": "Droplets",
+} as const;
+
+// Services data (without icon components - use serviceIcons mapping)
 export const services = [
   {
     id: "interior",
     title: "Interior Painting",
     slug: "interior",
-    icon: Home,
+    iconName: "Home" as const,
     description: "Transform your living spaces with our expert interior painting services. We use premium paints and techniques to deliver flawless finishes that last.",
     longDescription: `Our interior painting services are designed to transform your home into a beautiful, comfortable space that reflects your personal style. With over 16 years of experience, we've perfected our techniques to deliver exceptional results every time.
 
@@ -68,7 +72,7 @@ From single room refreshes to whole-home transformations, we handle projects of 
     id: "exterior",
     title: "Exterior Painting",
     slug: "exterior",
-    icon: Building2,
+    iconName: "Building2" as const,
     description: "Protect and beautify your property with our comprehensive exterior painting services. Built to withstand California's climate.",
     longDescription: `Your home's exterior is its first impression. Our exterior painting services not only enhance your property's curb appeal but also provide essential protection against the elements. California's intense sun and occasional rain can take a toll on your home's exterior, making quality paint work essential for both aesthetics and protection.
 
@@ -104,7 +108,7 @@ Our team is experienced with all exterior surfaces including stucco, wood siding
     id: "commercial",
     title: "Commercial Painting",
     slug: "commercial",
-    icon: Paintbrush,
+    iconName: "Paintbrush" as const,
     description: "Professional painting solutions for businesses of all sizes. Minimal disruption, maximum impact.",
     longDescription: `First impressions matter in business. Our commercial painting services help create professional, welcoming environments that impress clients and inspire employees. We understand that your business can't afford extended downtime, which is why we offer flexible scheduling including nights and weekends.
 
@@ -140,7 +144,7 @@ We're fully licensed and insured, and we understand the unique requirements of c
     id: "cabinet-refinishing",
     title: "Cabinet Refinishing",
     slug: "cabinet-refinishing",
-    icon: Sparkles,
+    iconName: "Sparkles" as const,
     description: "Give your kitchen and bathroom cabinets a stunning makeover without the cost of replacement.",
     longDescription: `Transform your kitchen or bathroom without the expense and hassle of a full remodel. Our cabinet refinishing services can give your cabinets a beautiful, like-new appearance at a fraction of the cost of replacement.
 
@@ -176,7 +180,7 @@ We use specialized cabinet-grade paints and finishes that are durable, washable,
     id: "epoxy-flooring",
     title: "Epoxy Flooring",
     slug: "epoxy-flooring",
-    icon: Droplets,
+    iconName: "Droplets" as const,
     description: "Durable, beautiful epoxy flooring solutions for garages, patios, and commercial spaces.",
     longDescription: `Upgrade your garage, workshop, or commercial space with our professional epoxy flooring services. Epoxy coatings create a durable, seamless surface that resists stains, chemicals, and wear while looking absolutely stunning.
 
@@ -280,12 +284,12 @@ export const testimonials = [
   },
 ];
 
-// Stats
+// Stats (icon names only)
 export const stats = [
-  { number: "16+", label: "Years Experience", icon: Calendar },
-  { number: "500+", label: "Projects Completed", icon: CheckCircle2 },
-  { number: "100%", label: "Satisfaction Rate", icon: Star },
-  { number: "33+", label: "5-Star Reviews", icon: Award },
+  { number: "16+", label: "Years Experience", iconName: "Calendar" as const },
+  { number: "500+", label: "Projects Completed", iconName: "CheckCircle2" as const },
+  { number: "100%", label: "Satisfaction Rate", iconName: "Star" as const },
+  { number: "33+", label: "5-Star Reviews", iconName: "Award" as const },
 ];
 
 // Contact info
@@ -315,14 +319,14 @@ export const companyInfo = {
   license: "Licensed & Insured",
 };
 
-// Why choose us
+// Why choose us (icon names only)
 export const whyChooseUs = [
-  { title: "Free estimates & consultations", icon: CheckCircle2 },
-  { title: "Licensed & fully insured", icon: Shield },
-  { title: "16+ years experience", icon: Calendar },
-  { title: "Quality materials guaranteed", icon: Award },
-  { title: "Clean, respectful crews", icon: CheckCircle2 },
-  { title: "Competitive pricing", icon: CheckCircle2 },
+  { title: "Free estimates & consultations", iconName: "CheckCircle2" as const },
+  { title: "Licensed & fully insured", iconName: "Shield" as const },
+  { title: "16+ years experience", iconName: "Calendar" as const },
+  { title: "Quality materials guaranteed", iconName: "Award" as const },
+  { title: "Clean, respectful crews", iconName: "CheckCircle2" as const },
+  { title: "Competitive pricing", iconName: "CheckCircle2" as const },
 ];
 
 // Business hours

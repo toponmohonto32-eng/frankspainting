@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, CheckCircle2, Send, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle2, Send, Calendar, Award, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -244,7 +244,8 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Why Choose Frank Painting?</h3>
                   <ul className="space-y-3">
                     {whyChooseUs.slice(0, 6).map((item, index) => {
-                      const Icon = item.icon;
+                      const iconMap: Record<string, any> = { CheckCircle2, Calendar, Award, Shield };
+                      const Icon = iconMap[item.iconName] || CheckCircle2;
                       return (
                         <li key={index} className="flex items-center gap-3">
                           <Icon className="w-5 h-5 text-emerald-500 flex-shrink-0" />

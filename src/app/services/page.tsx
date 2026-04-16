@@ -3,11 +3,20 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Home, Building2, Paintbrush, Sparkles, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PageHeader from "@/components/shared/PageHeader";
 import { services } from "@/lib/data";
+
+// Icon mapping
+const iconMap: Record<string, any> = {
+  Home,
+  Building2,
+  Paintbrush,
+  Sparkles,
+  Droplets,
+};
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -53,7 +62,7 @@ export default function ServicesPage() {
             className="grid md:grid-cols-2 gap-8"
           >
             {services.map((service) => {
-              const Icon = service.icon;
+              const Icon = iconMap[service.iconName] || Home;
               return (
                 <motion.div
                   key={service.id}

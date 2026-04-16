@@ -3,11 +3,25 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { CheckCircle2, ArrowRight, Phone, Calendar, Award, Shield, Users } from "lucide-react";
+import { CheckCircle2, ArrowRight, Phone, Calendar, Award, Shield, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import PageHeader from "@/components/shared/PageHeader";
 import { stats, companyInfo, whyChooseUs } from "@/lib/data";
+
+// Icon mappings
+const statsIconMap: Record<string, any> = {
+  Calendar,
+  CheckCircle2,
+  Star,
+  Award,
+};
+
+const whyChooseUsIconMap: Record<string, any> = {
+  CheckCircle2,
+  Shield,
+  Calendar,
+  Award,
+};
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -62,7 +76,7 @@ export default function AboutPage() {
                   <div className="bg-white rounded-3xl p-8">
                     <div className="grid grid-cols-2 gap-4">
                       {stats.map((stat, index) => {
-                        const Icon = stat.icon;
+                        const Icon = statsIconMap[stat.iconName] || Calendar;
                         return (
                           <motion.div
                             key={index}
@@ -221,7 +235,7 @@ export default function AboutPage() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {whyChooseUs.map((item, index) => {
-              const Icon = item.icon;
+              const Icon = whyChooseUsIconMap[item.iconName] || CheckCircle2;
               return (
                 <motion.div
                   key={index}

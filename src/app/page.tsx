@@ -13,12 +13,25 @@ import {
   Shield,
   Award,
   Calendar,
-  MapPin
+  MapPin,
+  Home,
+  Building2,
+  Sparkles,
+  Droplets
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { services, stats, testimonials, serviceAreas } from "@/lib/data";
+
+// Icon mapping
+const iconMap: Record<string, any> = {
+  Home,
+  Building2,
+  Paintbrush,
+  Sparkles,
+  Droplets,
+};
 
 // Animation variants
 const fadeInUp = {
@@ -38,6 +51,14 @@ const staggerContainer = {
 const scaleIn = {
   initial: { opacity: 0, scale: 0.8 },
   animate: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
+
+// Stats icon mapping
+const statsIconMap: Record<string, any> = {
+  Calendar,
+  CheckCircle2,
+  Star,
+  Award,
 };
 
 export default function HomePage() {
@@ -226,7 +247,7 @@ export default function HomePage() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {services.map((service) => {
-              const Icon = service.icon;
+              const Icon = iconMap[service.iconName] || Home;
               return (
                 <motion.div
                   key={service.id}

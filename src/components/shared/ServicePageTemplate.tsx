@@ -3,13 +3,13 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, CheckCircle2, Phone, Star, Clock, Shield, Award } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone, Star, Clock, Shield, Award, Home, Building2, Paintbrush, Sparkles, Droplets, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import PageHeader from "@/components/shared/PageHeader";
-import { services, testimonials } from "@/lib/data";
+import { testimonials } from "@/lib/data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -30,12 +30,35 @@ const scaleIn = {
   animate: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
 };
 
+// Icon mapping
+const iconMap: Record<string, any> = {
+  Home,
+  Building2,
+  Paintbrush,
+  Sparkles,
+  Droplets,
+};
+
+interface ServiceData {
+  id: string;
+  title: string;
+  slug: string;
+  iconName: string;
+  description: string;
+  longDescription: string;
+  features: string[];
+  color: string;
+  image: string;
+  benefits: string[];
+  process: { step: number; title: string; description: string }[];
+}
+
 interface ServicePageTemplateProps {
-  service: typeof services[0];
+  service: ServiceData;
 }
 
 export default function ServicePageTemplate({ service }: ServicePageTemplateProps) {
-  const Icon = service.icon;
+  const Icon = iconMap[service.iconName] || Home;
   
   const featuresRef = useRef(null);
   const featuresInView = useInView(featuresRef, { once: true, margin: "-100px" });
